@@ -21,6 +21,51 @@ class Instanciacao {
         empresas << e
     }
 
+    void verMatches(){
+        boolean algumMatchEcontrado = false
+
+        pessoas.each {p ->
+            p.empresasCurtidas.each { empresaId ->
+                Empresa e = empresas.find({empresas ->
+                    empresas.id == empresaId
+                })
+
+                if (e && e.pessoasCurtidas.contains(p.id)) {
+                    println("Match encontrado!!!")
+                    println("A empresa ${e.nome} e o canditado ${p.nome} deram match!")
+                    println()
+                    algumMatchEcontrado = true
+                }
+
+                if (algumMatchEcontrado == false){
+                    println("Nenhum match encontrado")
+                }
+            }
+        }
+    }
+
+    void cadastrarPessoa(String nome, String email, String cpf, int idade, String estado, String cep, String descricao, List<String> competencias){
+
+        Person p = new Person(nome:nome, email:email, cpf:cpf, idade:idade, estado:estado, cep:cep, descricaoPessoal:descricao)
+
+        competencias.each { c ->
+            p.addCompetencia(c)
+        }
+
+        pessoas << p
+    }
+
+    void cadastrarEmpresa(String nome, String emailCorp, String cnpj, String pais, String estado, String cep, String descricao, List<String> competencias){
+
+        Empresa e = new Empresa(nome:nome, emailCorporativo:emailCorp, cnpj:cnpj, pais:pais, estado:estado, cep:cep, descricaoEmpresa:descricao)
+
+        competencias.each { c ->
+            e.addCompetencia(c)
+        }
+
+        empresas << e
+    }
+
     private void criarPessoas() {
         def p1 = new Person(
                 nome: "Arthur Silva",
