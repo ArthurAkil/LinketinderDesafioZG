@@ -4,9 +4,9 @@ import groovy.transform.ToString
 
 @ToString
 class Person {
-    private static int idContador = 0
+    private static Integer idContador = 0
 
-    int id = ++idContador
+    Integer id = ++idContador
     String nome
     String email
     String cpf
