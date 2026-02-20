@@ -1,13 +1,11 @@
 package LinketinderDesafioZG
 
 import LinketinderDesafioZG.classes.Empresa
+import LinketinderDesafioZG.menu.Menu
+import LinketinderDesafioZG.utils.Instanciacao
 
-Empresa e = new Empresa()
 
-e.addCompetencia("    python   ")
-e.addCompetencia("    Comunicação Efetiva   ")
+Menu menu = new Menu()
 
-e.competenciasEsperadas.forEach {
-    println(it)
-}
+menu.iniciar()
 
